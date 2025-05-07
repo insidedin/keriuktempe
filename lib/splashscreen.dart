@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:keripiktempe/home.dart';
+import 'package:keripiktempe/widgets/textview.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -28,12 +29,8 @@ class _SplashscreenState extends State<Splashscreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('KeriukTempe',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.lightBlueAccent,
-                ))
+            textView(EdgeInsets.all(0), 'KruikTempe',
+                        TextAlign.left, Colors.green, FontWeight.bold, 20.0),
           ],
         ),
       ),
