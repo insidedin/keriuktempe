@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keripiktempe/home.dart';
 import 'package:keripiktempe/splashscreen.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Splashscreen(),
+      home: Home(),
     );
   }
 }
