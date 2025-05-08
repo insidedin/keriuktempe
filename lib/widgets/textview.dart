@@ -16,51 +16,36 @@ textView(margin, text, posisi, warna, tebal, ukuran) {
   );
 }
 
-etalaseView(margin, gambar, nama, harga) {
-  return Container(
-    margin: margin,
+etalaseView(
+  EdgeInsets margin,
+  String gambar,
+  String nama,
+  String harga, {
+  Function()? onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
     child: Container(
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 7,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
+      margin: margin,
+      width: 150, // pastikan semua sama ukuran
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              gambar,
-              width: 150,
-              height: 150,
-              fit: BoxFit.cover,
+          Container(
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(gambar),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
           SizedBox(height: 10),
-          textView(
-            EdgeInsets.all(0),
-            nama,
-            TextAlign.left,
-            Colors.black,
-            FontWeight.w400,
-            13.0,
-          ),
-          textView(
-            EdgeInsets.all(0),
-            harga,
-            TextAlign.left,
-            Color(0xFF78AC9D),
-            FontWeight.bold,
-            15.0,
-          ),
+          textView(EdgeInsets.all(0), nama, TextAlign.center, Colors.black,
+              FontWeight.w400, 13.0),
+          textView(EdgeInsets.all(0), harga, TextAlign.center,
+              Color(0xFF78AC9D), FontWeight.bold, 15.0),
         ],
       ),
     ),

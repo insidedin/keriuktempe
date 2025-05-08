@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keripiktempe/detailproduk.dart';
 import 'package:keripiktempe/widgets/textview.dart';
 
 class Home extends StatefulWidget {
@@ -119,14 +120,42 @@ class _HomeState extends State<Home> {
                   etalaseView(
                     EdgeInsets.only(top: 20),
                     'assets/1.jpg',
-                    'Keripik Tempe Original',
+                    'Original Flavor',
                     'Rp.15.000',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailProduk(
+                            gambar: 'assets/1.jpg',
+                            nama: 'Keripik Tempe Original',
+                            harga: 'Rp.15.000',
+                            deskripsi:
+                                'Keripik tempe renyah khas Bu Mar dengan cita rasa original.',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   etalaseView(
                     EdgeInsets.only(top: 20),
                     'assets/3.jpg',
                     'Manis Asin Sedap',
                     'Rp.25.000',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailProduk(
+                            gambar: 'assets/3.jpg',
+                            nama: 'Manis Asin Sedap',
+                            harga: 'Rp.25.000',
+                            deskripsi:
+                                'Keripik tempe renyah khas Bu Mar dengan cita rasa Manis Asin Sedap.',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
