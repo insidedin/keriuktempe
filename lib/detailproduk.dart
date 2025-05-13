@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keripiktempe/formpesan.dart';
 import 'package:keripiktempe/widgets/textview.dart';
 
 class DetailProduk extends StatelessWidget {
@@ -27,6 +28,7 @@ class DetailProduk extends StatelessWidget {
           FontWeight.w500,
           14.0,
         ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -89,27 +91,22 @@ class DetailProduk extends StatelessWidget {
             SizedBox(height: 16),
 
             //tombol beli
-            ElevatedButton(
-              onPressed: () {
-                // Aksi ketika tombol beli ditekan
+            buttonView(
+              'Beli Sekarang',
+              () {
+                // Aksi ketika tombol dibeli ditekan
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Formpesan(),
+                  ),
+                );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('Produk ditambahkan ke keranjang!'),
                   ),
                 );
               },
-              child: textView(
-                EdgeInsets.zero,
-                'Beli Sekarang',
-                TextAlign.center,
-                Colors.white,
-                FontWeight.w500,
-                12.0,
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 90),
-                backgroundColor: Colors.green,
-              ),
             ),
           ],
         ),

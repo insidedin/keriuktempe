@@ -47,3 +47,53 @@ etalaseView( EdgeInsets margin, gambar, nama, harga,{
     ),
   );
 }
+
+//widget untuk button
+buttonView(text, Function()? onPressed) {
+  return SizedBox(
+      width: double.infinity, // tombol full lebar
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          backgroundColor: Colors.green,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+}
+
+///khusus widget WAVA TEAM
+menuItem(icon, label) {
+  return Container(
+    width: 70,
+    height: 70,
+    margin: EdgeInsets.symmetric(horizontal: 5),
+    decoration: BoxDecoration(
+      color: Colors.grey[200],
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, size: 28, color: Colors.black),
+        SizedBox(height: 4),
+        Text(
+          label,
+          style: TextStyle(fontSize: 10),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    ),
+  );
+}
