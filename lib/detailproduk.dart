@@ -33,6 +33,8 @@ class DetailProduk extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            //memanggil gambar produk
             Center(
               child: Image.asset(
                 gambar,
@@ -41,6 +43,8 @@ class DetailProduk extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
+
+            //memanggil nama produk
             textView(
               EdgeInsets.zero,
               nama,
@@ -50,6 +54,8 @@ class DetailProduk extends StatelessWidget {
               22.0,
             ),
             SizedBox(height: 8),
+
+            //memanggil harga produk
             textView(
               EdgeInsets.zero,
               harga,
@@ -59,6 +65,8 @@ class DetailProduk extends StatelessWidget {
               18.0,
             ),
             SizedBox(height: 16),
+
+            //memanggil deskripsi produk
             textView(
               EdgeInsets.zero,
               'Deskripsi Produk:',
@@ -68,6 +76,8 @@ class DetailProduk extends StatelessWidget {
               16.0,
             ),
             SizedBox(height: 8),
+
+            //memanggil deskripsi produk
             textView(
               EdgeInsets.zero,
               deskripsi,
@@ -75,6 +85,31 @@ class DetailProduk extends StatelessWidget {
               Colors.black,
               FontWeight.normal,
               14.0,
+            ),
+            SizedBox(height: 16),
+
+            //tombol beli
+            ElevatedButton(
+              onPressed: () {
+                // Aksi ketika tombol beli ditekan
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Produk ditambahkan ke keranjang!'),
+                  ),
+                );
+              },
+              child: textView(
+                EdgeInsets.zero,
+                'Beli Sekarang',
+                TextAlign.center,
+                Colors.white,
+                FontWeight.w500,
+                12.0,
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 90),
+                backgroundColor: Colors.green,
+              ),
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:keripiktempe/home.dart';
+import 'package:keripiktempe/homewava.dart';
 import 'package:keripiktempe/splashscreen.dart';
 
 void main() {

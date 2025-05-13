@@ -69,22 +69,20 @@ class _HomeState extends State<Home> {
 
           //konten slider
           Container(
-            margin: EdgeInsets.only(top: 20),
-            width:
-                MediaQuery.of(context).size.width * 0.9, // 90% dari lebar layar
-            height: MediaQuery.of(context).size.height *
-                0.25, // 25% dari tinggi layar (opsional)
+            margin: EdgeInsets.only(top:20),
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height * 0.25,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: Image.asset(
                 'assets/slider.png',
-                fit: BoxFit
-                    .cover, // gunakan cover agar gambar tetap proporsional
+                fit: BoxFit.cover,
               ),
             ),
           ),
 
-          //konten kategori
+          //konten etalase produk
           Container(
             margin: EdgeInsets.only(top: 20),
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -167,12 +165,40 @@ class _HomeState extends State<Home> {
                     'assets/4.jpg',
                     'Nusantara Flavor',
                     'Rp.25.000',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailProduk(
+                            gambar: 'assets/4.jpg',
+                            nama: 'Nusantra Flavor',
+                            harga: 'Rp.25.000',
+                            deskripsi:
+                                'Keripik tempe renyah khas Bu Mar dengan cita rasa Nusantara.',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   etalaseView(
                     EdgeInsets.only(top: 20),
                     'assets/5.jpg',
                     'Pedas Gurih Nagih ',
                     'Rp.20.000',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailProduk(
+                            gambar: 'assets/5.jpg',
+                            nama: 'Pedas Gurih Nagih',
+                            harga: 'Rp.20.000',
+                            deskripsi:
+                                'Keripik tempe renyah khas Bu Mar dengan cita rasa Pedas Gurih Nagih.',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
