@@ -35,7 +35,6 @@ class DetailProduk extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             //memanggil gambar produk
             Center(
               child: Image.asset(
@@ -98,7 +97,10 @@ class DetailProduk extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Formpesan(),
+                    builder: (context) => Formpesan(
+                      rasa: nama,
+                      harga: int.parse(harga.replaceAll(RegExp(r'[^0-9]'), '')),
+                    ),
                   ),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(

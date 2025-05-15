@@ -2,38 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:keripiktempe/widgets/textview.dart';
 
 class Formpesan extends StatefulWidget {
-  const Formpesan({super.key});
+  final String rasa;
+  final int harga;
+
+  const Formpesan({
+    super.key,
+    required this.rasa,
+    required this.harga,
+  });
 
   @override
   State<Formpesan> createState() => _FormpesanState();
 }
 
 class _FormpesanState extends State<Formpesan> {
-  //definisi controller inputan
   final TextEditingController namaController = TextEditingController();
   final TextEditingController hpController = TextEditingController();
   final TextEditingController alamatController = TextEditingController();
 
-  //definisi variabel
   int jumlahPesanan = 1;
-  int hargaSatuan = 25000;
-  int get totalHarga => jumlahPesanan * hargaSatuan;
 
-  //variabel untuk menyimpan pilihan
-  String? rasaTerpilih;
-  String? metodePembayaran;
+  int get totalHarga => jumlahPesanan * widget.harga;
 
-  List<String> variasiRasa = [
-    'Keripik Tempe Manis Asin Sedap',
-    'Keripik Tempe Pedas Gurih',
-    'Keripik Tempe Original Renyah'
-  ];
-
-  List<String> metodePembayaranList = [
-    'COD (Cash On Delivery)',
-    'Transfer Bank',
-    'E-Wallet'
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,22 +45,11 @@ class _FormpesanState extends State<Formpesan> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              // Variasi Rasa
-              Text('Variasi Rasa:', style: TextStyle(fontWeight: FontWeight.w600)),
-              const SizedBox(height: 4),
-              DropdownButtonFormField<String>(
-                value: rasaTerpilih,
-                hint: Text('Pilih Varian'),
-                onChanged: (value) => setState(() => rasaTerpilih = value),
-                items: variasiRasa.map((rasa) {
-                  return DropdownMenuItem(value: rasa, child: Text(rasa));
-                }).toList(),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                ),
-              ),
-              const SizedBox(height: 16),
+              // Info Produk
+              Text('Varian: ${widget.rasa}', style: TextStyle(fontWeight: FontWeight.w600)),
+              SizedBox(height: 8),
+              Text('Harga Satuan: Rp ${widget.harga}', style: TextStyle(fontWeight: FontWeight.w600)),
+              SizedBox(height: 16),
 
               // Jumlah Pesanan
               Text('Jumlah Pesanan:', style: TextStyle(fontWeight: FontWeight.w600)),
@@ -104,14 +83,13 @@ class _FormpesanState extends State<Formpesan> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Total Harga', style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold)),
-                  SizedBox(width: 8),
+                  Text('Total Harga: ', style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold)),
                   Text('Rp ${totalHarga.toString()}', style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold)),
                 ],
               ),
               const SizedBox(height: 24),
 
-              // Nama Pemesan
+              // Form Inputan
               Text('Nama Pemesan:', style: TextStyle(fontWeight: FontWeight.w600)),
               const SizedBox(height: 4),
               TextField(
@@ -122,7 +100,6 @@ class _FormpesanState extends State<Formpesan> {
               ),
               const SizedBox(height: 16),
 
-              // Nomor HP
               Text('Nomor Handphone:', style: TextStyle(fontWeight: FontWeight.w600)),
               const SizedBox(height: 4),
               TextField(
@@ -134,7 +111,6 @@ class _FormpesanState extends State<Formpesan> {
               ),
               const SizedBox(height: 16),
 
-              // Alamat
               Text('Alamat:', style: TextStyle(fontWeight: FontWeight.w600)),
               const SizedBox(height: 4),
               TextField(
@@ -144,33 +120,13 @@ class _FormpesanState extends State<Formpesan> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 16),
-
-              // Metode Pembayaran
-              Text('Metode Pembayaran:', style: TextStyle(fontWeight: FontWeight.w600)),
-              const SizedBox(height: 4),
-              DropdownButtonFormField<String>(
-                value: metodePembayaran,
-                hint: Text('Pilih Metode Pembayaran'),
-                onChanged: (value) => setState(() => metodePembayaran = value),
-                items: metodePembayaranList.map((metode) {
-                  return DropdownMenuItem(value: metode, child: Text(metode));
-                }).toList(),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                ),
-              ),
               const SizedBox(height: 24),
 
               // Tombol Kirim
               buttonView(
                 'Kirim Pesanan',
                 () {
-                  // Validasi data sebelum kirim
-                  if (rasaTerpilih == null ||
-                      metodePembayaran == null ||
-                      namaController.text.isEmpty ||
+                  if (namaController.text.isEmpty ||
                       hpController.text.isEmpty ||
                       alamatController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -179,9 +135,9 @@ class _FormpesanState extends State<Formpesan> {
                     return;
                   }
 
-                  // Lanjutkan ke submit/pesan
+                  // Kirim data pesanan, simpan ke database atau API
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Pesanan dikirim!')),
+                    SnackBar(content: Text('Pesanan berhasil dikirim!')),
                   );
                 },
               ),
