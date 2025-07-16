@@ -1,9 +1,20 @@
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:keripiktempe/home.dart';
-import 'package:keripiktempe/homewava.dart';
-import 'package:keripiktempe/splashscreen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options:FirebaseOptions(
+      apiKey: "AIzaSyDlI6tWddZUOwswZ7w4I8sCgqF2GzFaNMM",
+      authDomain: "keriuk-tempe.firebaseapp.com",
+      projectId: "keriuk-tempe",
+      storageBucket: "keriuk-tempe.firebasestorage.app",
+      messagingSenderId: "806708669912",
+      appId: "1:806708669912:web:661f77de9842ac832dd6ad"
+    )
+  );
   runApp(const MyApp());
 }
 

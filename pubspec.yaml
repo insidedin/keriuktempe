@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
+  firebase_core:
+  cloud_firestore_web:
 
 dev_dependencies:
   flutter_test:

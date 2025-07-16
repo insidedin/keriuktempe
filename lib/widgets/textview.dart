@@ -38,7 +38,7 @@ etalaseView( EdgeInsets margin, gambar, nama, harga,{
           ),
           SizedBox(height: 10),
           textView(EdgeInsets.all(0),
-          nama, TextAlign.center, Colors.black, FontWeight.w400, 14.0),
+          nama, TextAlign.center, Colors.black, FontWeight.w400, 14.0, ),
           SizedBox(height: 5),
           textView(EdgeInsets.all(0),
           harga, TextAlign.center,Color(0xFF78AC9D), FontWeight.bold, 15.0)
